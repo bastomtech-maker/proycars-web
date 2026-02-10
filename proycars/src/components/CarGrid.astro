@@ -1,0 +1,60 @@
+---
+import CarCard from './CarCard.astro';
+
+interface CarData {
+  marca: string;
+  modelo: string;
+  año: number;
+  precio: number;
+  kilometros: number;
+  combustible: string;
+  transmision: string;
+  potencia: number;
+  imagenes: string[];
+  estado: 'Nuevo' | 'Seminuevo' | 'Ocasión';
+  destacado: boolean;
+  slug: string;
+}
+
+interface Props {
+  coches: CarData[];
+  titulo?: string;
+  subtitulo?: string;
+}
+
+const { coches, titulo, subtitulo } = Astro.props;
+---
+
+<section class="container py-12 sm:py-16">
+  {titulo && (
+    <div class="mb-8">
+      <h2 class="mb-2">{titulo}</h2>
+      {subtitulo && <p class="max-w-lg text-text-muted">{subtitulo}</p>}
+    </div>
+  )}
+
+  {coches.length > 0 ? (
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+      {coches.map((coche) => (
+        <CarCard
+          marca={coche.marca}
+          modelo={coche.modelo}
+          año={coche.año}
+          precio={coche.precio}
+          kilometros={coche.kilometros}
+          combustible={coche.combustible}
+          transmision={coche.transmision}
+          potencia={coche.potencia}
+          imagen={coche.imagenes[0]}
+          estado={coche.estado}
+          destacado={coche.destacado}
+          slug={coche.slug}
+        />
+      ))}
+    </div>
+  ) : (
+    <div class="rounded-xl bg-surface-raised p-8 text-center sm:p-12">
+      <p class="text-lg text-text-muted">No se encontraron vehículos.</p>
+    </div>
+  )}
+</section>

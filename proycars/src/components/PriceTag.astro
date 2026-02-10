@@ -1,0 +1,19 @@
+---
+interface Props {
+  precio: number;
+  class?: string;
+}
+
+const { precio, class: className = '' } = Astro.props;
+
+const formatted = new Intl.NumberFormat('es-ES', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+}).format(precio);
+---
+
+<span class:list={['font-bold text-brand-white', className]}>
+  {formatted}
+</span>

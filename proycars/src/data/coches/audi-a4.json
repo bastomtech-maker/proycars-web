@@ -1,0 +1,14 @@
+{
+  "marca": "Audi",
+  "modelo": "A4 Avant 2.0 TDI",
+  "año": 2021,
+  "precio": 29900,
+  "kilometros": 45000,
+  "combustible": "Diésel",
+  "transmision": "Automático",
+  "potencia": 150,
+  "imagenes": ["/img/coches/audi-a4-1.jpg", "/img/coches/audi-a4-2.jpg"],
+  "estado": "Ocasión",
+  "destacado": false,
+  "slug": "audi-a4-avant-tdi"
+}

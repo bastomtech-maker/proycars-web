@@ -1,0 +1,22 @@
+---
+interface Props {
+  estado: 'Nuevo' | 'Seminuevo' | 'Ocasión';
+}
+
+const { estado } = Astro.props;
+
+const colorMap: Record<string, string> = {
+  'Nuevo': 'bg-emerald-500/15 text-emerald-400 ring-emerald-500/25',
+  'Seminuevo': 'bg-amber-500/15 text-amber-400 ring-amber-500/25',
+  'Ocasión': 'bg-sky-500/15 text-sky-400 ring-sky-500/25',
+};
+
+const classes = colorMap[estado] ?? 'bg-surface-overlay text-text-secondary';
+---
+
+<span class:list={[
+  'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset',
+  classes,
+]}>
+  {estado}
+</span>

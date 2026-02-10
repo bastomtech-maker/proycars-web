@@ -1,0 +1,14 @@
+{
+  "marca": "SEAT",
+  "modelo": "León FR 1.5 TSI",
+  "año": 2023,
+  "precio": 24500,
+  "kilometros": 8500,
+  "combustible": "Gasolina",
+  "transmision": "Manual",
+  "potencia": 150,
+  "imagenes": ["/img/coches/seat-leon-1.jpg", "/img/coches/seat-leon-2.jpg"],
+  "estado": "Seminuevo",
+  "destacado": true,
+  "slug": "seat-leon-fr"
+}

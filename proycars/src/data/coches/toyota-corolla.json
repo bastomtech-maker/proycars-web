@@ -1,0 +1,14 @@
+{
+  "marca": "Toyota",
+  "modelo": "Corolla Touring Sports",
+  "año": 2024,
+  "precio": 32900,
+  "kilometros": 0,
+  "combustible": "Híbrido",
+  "transmision": "Automático",
+  "potencia": 196,
+  "imagenes": ["/img/coches/toyota-corolla-1.jpg", "/img/coches/toyota-corolla-2.jpg"],
+  "estado": "Nuevo",
+  "destacado": true,
+  "slug": "toyota-corolla-touring"
+}

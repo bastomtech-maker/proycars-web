@@ -410,4 +410,86 @@
   .whatsapp-float:hover {
     animation: none;
   }
+
+  /* ---- Car Card ---- */
+  .car-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-surface-overlay);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .car-card:hover {
+    border-color: var(--color-action);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(225, 29, 72, 0.15);
+  }
+
+  .car-card:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .car-card-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-surface-overlay);
+  }
+
+  .car-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .car-card-body {
+      padding: 1.25rem;
+    }
+  }
+
+  /* Extended details: always visible on mobile, revealed on hover for desktop */
+  .car-card-details {
+    margin-top: auto;
+  }
+
+  @media (min-width: 768px) {
+    .car-card-details {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease, opacity 200ms ease;
+    }
+
+    .car-card:hover .car-card-details {
+      max-height: 6rem;
+      opacity: 1;
+    }
+  }
+
+  /* CTA: always visible on mobile, revealed on hover for desktop */
+  .car-card-cta {
+    margin-top: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .car-card-cta {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease 50ms, opacity 200ms ease 100ms;
+    }
+
+    .car-card:hover .car-card-cta {
+      max-height: 4rem;
+      opacity: 1;
+    }
+  }
 }

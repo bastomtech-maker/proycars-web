@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CarGrid from '../components/CarGrid.astro';
+
+const allCoches = await getCollection('coches');
+
+const cochesData = allCoches
+  .map((entry) => entry.data)
+  .sort((a, b) => {
+    if (a.destacado !== b.destacado) return a.destacado ? -1 : 1;
+    return b.año - a.año;
+  });
+---
+
+<BaseLayout title="Coches — Proycars" description="Descubre nuestro catálogo de vehículos de ocasión revisados y garantizados.">
+
+  <!-- Page header -->
+  <section class="container pt-10 sm:pt-14">
+    <span class="badge badge-action mb-4 inline-block">Catálogo</span>
+    <h1 class="mb-4">
+      Nuestros <span class="text-brand-red">vehículos</span>
+    </h1>
+    <p class="max-w-xl text-lg text-text-secondary">
+      Todos nuestros coches están revisados punto por punto y cuentan con garantía. Encuentra el tuyo.
+    </p>
+  </section>
+
+  <CarGrid
+    coches={cochesData}
+  />
+
+</BaseLayout>

@@ -1,5 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CarGrid from '../components/CarGrid.astro';
+
+const allCoches = await getCollection('coches');
+const destacados = allCoches
+  .map((entry) => entry.data)
+  .filter((c) => c.destacado)
+  .sort((a, b) => b.año - a.año)
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Proycars — Plataforma Automotriz">
@@ -22,66 +31,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ========== CARDS GRID ========== -->
-  <section class="container py-12 sm:py-16">
-    <h2 class="mb-2">Destacados</h2>
-    <p class="mb-8 max-w-lg text-text-muted">Los vehículos más buscados de la semana.</p>
-
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
-      <article class="card card-interactive">
-        <div class="card-header">
-          <div class="mb-2 flex items-center gap-2">
-            <span class="badge badge-action">Nuevo</span>
-            <span class="badge">SUV</span>
-          </div>
-          <h3 class="card-title">Toyota Corolla Cross</h3>
-          <p class="card-description">2024 · Automático · 0 km</p>
-        </div>
-        <div class="card-body">
-          <p>Motor 2.0L con tecnología híbrida. Consumo eficiente y máximo confort para toda la familia.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary btn-sm">Cotizar</a>
-          <a href="#" class="btn btn-ghost btn-sm">Ver más</a>
-        </div>
-      </article>
-
-      <article class="card card-interactive">
-        <div class="card-header">
-          <div class="mb-2 flex items-center gap-2">
-            <span class="badge">Sedán</span>
-          </div>
-          <h3 class="card-title">Volkswagen Vento</h3>
-          <p class="card-description">2024 · Manual · 0 km</p>
-        </div>
-        <div class="card-body">
-          <p>Diseño elegante con tecnología de punta. Ideal para quienes buscan potencia y estilo.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary btn-sm">Cotizar</a>
-          <a href="#" class="btn btn-ghost btn-sm">Ver más</a>
-        </div>
-      </article>
-
-      <article class="card card-interactive">
-        <div class="card-header">
-          <div class="mb-2 flex items-center gap-2">
-            <span class="badge badge-action">Oferta</span>
-            <span class="badge">Pickup</span>
-          </div>
-          <h3 class="card-title">Ford Ranger</h3>
-          <p class="card-description">2023 · Automático · 15.000 km</p>
-        </div>
-        <div class="card-body">
-          <p>La pickup más vendida. Robusta, versátil y preparada para cualquier terreno.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary btn-sm">Cotizar</a>
-          <a href="#" class="btn btn-ghost btn-sm">Ver más</a>
-        </div>
-      </article>
-    </div>
-  </section>
+  <!-- ========== DESTACADOS ========== -->
+  <CarGrid
+    coches={destacados}
+    titulo="Destacados"
+    subtitulo="Los vehículos más buscados de la semana."
+  />
 
   <!-- ========== DESIGN SYSTEM SHOWCASE ========== -->
   <section class="container py-12 sm:py-16">

@@ -1,0 +1,14 @@
+{
+  "marca": "Volkswagen",
+  "modelo": "Golf 8 R-Line",
+  "año": 2022,
+  "precio": 27900,
+  "kilometros": 35000,
+  "combustible": "Gasolina",
+  "transmision": "Automático",
+  "potencia": 150,
+  "imagenes": ["/img/coches/vw-golf-1.jpg", "/img/coches/vw-golf-2.jpg"],
+  "estado": "Ocasión",
+  "destacado": false,
+  "slug": "volkswagen-golf-8-rline"
+}

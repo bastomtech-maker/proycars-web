@@ -1,0 +1,14 @@
+{
+  "marca": "BMW",
+  "modelo": "Serie 3 320d",
+  "año": 2022,
+  "precio": 34900,
+  "kilometros": 28000,
+  "combustible": "Diésel",
+  "transmision": "Automático",
+  "potencia": 190,
+  "imagenes": ["/img/coches/bmw-serie-3-1.jpg", "/img/coches/bmw-serie-3-2.jpg"],
+  "estado": "Seminuevo",
+  "destacado": true,
+  "slug": "bmw-serie-3-320d"
+}

@@ -1,0 +1,14 @@
+{
+  "marca": "Mercedes-Benz",
+  "modelo": "Clase A 200",
+  "año": 2023,
+  "precio": 31500,
+  "kilometros": 12000,
+  "combustible": "Gasolina",
+  "transmision": "Automático",
+  "potencia": 163,
+  "imagenes": ["/img/coches/mercedes-clase-a-1.jpg", "/img/coches/mercedes-clase-a-2.jpg"],
+  "estado": "Seminuevo",
+  "destacado": true,
+  "slug": "mercedes-clase-a-200"
+}

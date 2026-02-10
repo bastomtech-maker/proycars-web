@@ -1,0 +1,14 @@
+{
+  "marca": "Peugeot",
+  "modelo": "3008 GT Hybrid",
+  "año": 2023,
+  "precio": 38500,
+  "kilometros": 15000,
+  "combustible": "Híbrido",
+  "transmision": "Automático",
+  "potencia": 225,
+  "imagenes": ["/img/coches/peugeot-3008-1.jpg", "/img/coches/peugeot-3008-2.jpg"],
+  "estado": "Seminuevo",
+  "destacado": false,
+  "slug": "peugeot-3008-gt-hybrid"
+}
