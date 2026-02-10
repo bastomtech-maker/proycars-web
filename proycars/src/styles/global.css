@@ -492,4 +492,35 @@
       opacity: 1;
     }
   }
+
+  /* ---- Hero placeholder (when image fails to load) ---- */
+  .hero-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-surface-raised) 0%, var(--color-surface-overlay) 100%);
+  }
+
+  .hero-placeholder::after {
+    content: 'PROYCARS';
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--color-surface-overlay);
+  }
+
+  /* ---- Filter checkbox styling ---- */
+  .filter-checkbox {
+    width: 1rem;
+    height: 1rem;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-surface-overlay);
+    background-color: var(--color-surface);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .filter-checkbox:checked {
+    border-color: var(--color-action);
+  }
 }

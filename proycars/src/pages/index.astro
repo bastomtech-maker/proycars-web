@@ -9,24 +9,101 @@ const destacados = allCoches
   .filter((c) => c.destacado)
   .sort((a, b) => b.año - a.año)
   .slice(0, 3);
+
+const ventajas = [
+  {
+    icon: 'shield',
+    titulo: 'Garantía incluida',
+    descripcion: 'Todos nuestros vehículos cuentan con garantía mínima de 12 meses.',
+  },
+  {
+    icon: 'wrench',
+    titulo: 'Revisión 150 puntos',
+    descripcion: 'Cada coche pasa una inspección técnica exhaustiva antes de la venta.',
+  },
+  {
+    icon: 'banknotes',
+    titulo: 'Financiación a medida',
+    descripcion: 'Te ayudamos a encontrar la mejor financiación sin compromiso.',
+  },
+  {
+    icon: 'refresh',
+    titulo: 'Aceptamos tu coche',
+    descripcion: 'Valoramos tu vehículo actual y lo descontamos del precio.',
+  },
+];
 ---
 
-<BaseLayout title="Proycars — Plataforma Automotriz">
+<BaseLayout title="Proycars — Tu concesionario de confianza">
 
   <!-- ========== HERO ========== -->
-  <section class="container py-12 sm:py-16 lg:py-24">
-    <div class="max-w-3xl">
-      <span class="badge badge-action mb-4 inline-block">Nuevo lanzamiento</span>
-      <h1 class="mb-4 sm:mb-6">
-        Tu próximo auto<br />
-        <span class="text-brand-red">empieza aquí.</span>
-      </h1>
-      <p class="mb-8 max-w-xl text-lg text-text-secondary sm:text-xl">
-        Explorá el catálogo más completo de vehículos. Compará, cotizá y encontrá el auto perfecto para vos.
-      </p>
-      <div class="flex flex-col gap-3 sm:flex-row sm:gap-4">
-        <a href="#" class="btn btn-primary btn-lg">Ver catálogo</a>
-        <a href="#" class="btn btn-outline btn-lg">Contactar</a>
+  <section class="relative overflow-hidden">
+    <div class="container grid grid-cols-1 items-center gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
+      <!-- Text column -->
+      <div class="order-2 lg:order-1">
+        <span class="badge badge-action mb-4 inline-block">Concesionario de confianza</span>
+        <h1 class="mb-4 sm:mb-6">
+          Tu próximo coche<br class="hidden sm:block" />
+          <span class="text-brand-red">empieza aquí.</span>
+        </h1>
+        <p class="mb-8 max-w-xl text-lg leading-relaxed text-text-secondary sm:text-xl">
+          Vehículos de ocasión revisados y garantizados al mejor precio. Encuentra, compara y contacta sin compromiso.
+        </p>
+        <div class="flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <a href="/coches" class="btn btn-primary btn-lg w-full sm:w-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Ver catálogo
+          </a>
+          <a href="/contacto" class="btn btn-outline btn-lg w-full sm:w-auto">
+            Contactar
+          </a>
+        </div>
+        <!-- Trust indicators -->
+        <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-text-muted">
+          <span class="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            Garantía 12 meses
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            Financiación flexible
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            Revisión 150 puntos
+          </span>
+        </div>
+      </div>
+
+      <!-- Visual column -->
+      <div class="order-1 lg:order-2">
+        <div class="relative aspect-4/3 overflow-hidden rounded-2xl bg-surface-raised lg:aspect-3/2">
+          <img
+            src="/img/hero-car.jpg"
+            alt="Vehículo destacado en Proycars"
+            class="h-full w-full object-cover"
+            onerror="this.onerror=null;this.style.display='none';this.parentElement.classList.add('hero-placeholder')"
+          />
+          <!-- Stats overlay -->
+          <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-4 sm:p-6">
+            <div class="flex flex-wrap gap-4 text-sm text-brand-white sm:gap-6">
+              <div>
+                <p class="text-2xl font-bold sm:text-3xl">{allCoches.length}+</p>
+                <p class="text-xs text-text-muted">Vehículos</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold sm:text-3xl">12</p>
+                <p class="text-xs text-text-muted">Meses garantía</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold sm:text-3xl">150</p>
+                <p class="text-xs text-text-muted">Puntos revisión</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -34,113 +111,81 @@ const destacados = allCoches
   <!-- ========== DESTACADOS ========== -->
   <CarGrid
     coches={destacados}
-    titulo="Destacados"
-    subtitulo="Los vehículos más buscados de la semana."
+    titulo="Vehículos destacados"
+    subtitulo="Los coches más buscados de la semana."
   />
 
-  <!-- ========== DESIGN SYSTEM SHOWCASE ========== -->
-  <section class="container py-12 sm:py-16">
-    <h2 class="mb-2">Sistema de Diseño</h2>
-    <p class="mb-10 max-w-lg text-text-muted">Componentes base del design system corporativo.</p>
+  <!-- Ver todo el catálogo link -->
+  <div class="container -mt-6 mb-8 text-center sm:-mt-8 sm:mb-12">
+    <a href="/coches" class="link inline-flex items-center gap-1.5 text-sm font-medium">
+      Ver todo el catálogo
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
 
-    <!-- Typography -->
-    <div class="mb-12">
-      <h3 class="mb-4 text-text-muted">Tipografía</h3>
-      <div class="space-y-3 rounded-xl bg-surface-raised p-4 sm:p-6">
-        <h1>Heading 1 — Escalable</h1>
-        <h2>Heading 2 — Fluid</h2>
-        <h3>Heading 3 — Responsive</h3>
-        <h4>Heading 4 — Adaptable</h4>
-        <h5>Heading 5 — Flexible</h5>
-        <h6>Heading 6 — Compact</h6>
-        <p>Párrafo base — El texto se adapta fluidamente entre breakpoints usando clamp() para una experiencia de lectura óptima en cualquier dispositivo.</p>
-        <small>Small text — Información secundaria y metadatos.</small>
-      </div>
+  <!-- ========== VENTAJAS ========== -->
+  <section class="container py-12 sm:py-16 lg:py-20">
+    <div class="mb-10 max-w-2xl sm:mb-12">
+      <span class="badge badge-action mb-4 inline-block">¿Por qué elegirnos?</span>
+      <h2 class="mb-3">
+        Compra con <span class="text-brand-red">total confianza</span>
+      </h2>
+      <p class="text-lg text-text-secondary">
+        Nos diferenciamos por la transparencia, la calidad y el servicio personalizado.
+      </p>
     </div>
 
-    <!-- Buttons -->
-    <div class="mb-12">
-      <h3 class="mb-4 text-text-muted">Botones</h3>
-      <div class="space-y-6 rounded-xl bg-surface-raised p-4 sm:p-6">
-        <div>
-          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text-muted">Variantes</p>
-          <div class="flex flex-wrap gap-3">
-            <button class="btn btn-primary">Primary</button>
-            <button class="btn btn-outline">Outline</button>
-            <button class="btn btn-ghost">Ghost</button>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
+      {ventajas.map((v) => (
+        <div class="group rounded-xl border border-surface-overlay bg-surface-raised p-5 transition-all hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-red/5 sm:p-6">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red transition-colors group-hover:bg-brand-red group-hover:text-white">
+            {v.icon === 'shield' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            )}
+            {v.icon === 'wrench' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            )}
+            {v.icon === 'banknotes' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )}
+            {v.icon === 'refresh' && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            )}
           </div>
+          <h3 class="mb-2 text-base font-bold text-brand-white sm:text-lg">{v.titulo}</h3>
+          <p class="text-sm leading-relaxed text-text-muted">{v.descripcion}</p>
         </div>
-        <div>
-          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text-muted">Tamaños</p>
-          <div class="flex flex-wrap items-center gap-3">
-            <button class="btn btn-primary btn-sm">Small</button>
-            <button class="btn btn-primary">Default</button>
-            <button class="btn btn-primary btn-lg">Large</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Links -->
-    <div class="mb-12">
-      <h3 class="mb-4 text-text-muted">Enlaces</h3>
-      <div class="flex flex-wrap gap-6 rounded-xl bg-surface-raised p-4 sm:p-6">
-        <a href="#" class="link">Enlace primario</a>
-        <a href="#" class="link-subtle">Enlace sutil</a>
-      </div>
-    </div>
-
-    <!-- Badges -->
-    <div class="mb-12">
-      <h3 class="mb-4 text-text-muted">Badges</h3>
-      <div class="flex flex-wrap gap-3 rounded-xl bg-surface-raised p-4 sm:p-6">
-        <span class="badge">Default</span>
-        <span class="badge badge-action">Acción</span>
-      </div>
-    </div>
-
-    <!-- Colors -->
-    <div class="mb-12">
-      <h3 class="mb-4 text-text-muted">Paleta de Colores</h3>
-      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 sm:gap-4">
-        <div class="overflow-hidden rounded-lg border border-surface-overlay">
-          <div class="h-16 bg-brand-black sm:h-20"></div>
-          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Negro</div>
-        </div>
-        <div class="overflow-hidden rounded-lg border border-surface-overlay">
-          <div class="h-16 bg-brand-black-light sm:h-20"></div>
-          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Negro Light</div>
-        </div>
-        <div class="overflow-hidden rounded-lg border border-surface-overlay">
-          <div class="h-16 bg-brand-red sm:h-20"></div>
-          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Rojo</div>
-        </div>
-        <div class="overflow-hidden rounded-lg border border-surface-overlay">
-          <div class="h-16 bg-brand-red-hover sm:h-20"></div>
-          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Rojo Hover</div>
-        </div>
-        <div class="overflow-hidden rounded-lg border border-surface-overlay">
-          <div class="h-16 bg-brand-white sm:h-20"></div>
-          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Blanco</div>
-        </div>
-        <div class="overflow-hidden rounded-lg border border-surface-overlay">
-          <div class="h-16 bg-brand-white-muted sm:h-20"></div>
-          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Blanco Muted</div>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 
-  <!-- ========== CTA ========== -->
+  <!-- ========== CTA FINAL ========== -->
   <section class="container py-12 sm:py-16">
-    <div class="rounded-2xl bg-surface-raised p-6 text-center sm:p-10 lg:p-16">
-      <h2 class="mb-4">¿Listo para encontrar tu auto?</h2>
-      <p class="mx-auto mb-8 max-w-md text-text-secondary">
-        Contactanos hoy y recibí asesoramiento personalizado sin compromiso.
-      </p>
-      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-        <a href="#" class="btn btn-primary btn-lg w-full sm:w-auto">Empezar ahora</a>
-        <a href="#" class="btn btn-outline btn-lg w-full sm:w-auto">Más información</a>
+    <div class="relative overflow-hidden rounded-2xl bg-surface-raised p-6 sm:p-10 lg:p-16">
+      <!-- Decorative gradient -->
+      <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-red/10 blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-brand-red/5 blur-3xl"></div>
+
+      <div class="relative text-center">
+        <h2 class="mb-4">¿Listo para encontrar tu coche?</h2>
+        <p class="mx-auto mb-8 max-w-md text-text-secondary">
+          Contacta hoy y recibe asesoramiento personalizado sin compromiso.
+        </p>
+        <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          <a href="/coches" class="btn btn-primary btn-lg w-full sm:w-auto">Explorar catálogo</a>
+          <a href="/contacto" class="btn btn-outline btn-lg w-full sm:w-auto">Contactar</a>
+        </div>
       </div>
     </div>
   </section>
