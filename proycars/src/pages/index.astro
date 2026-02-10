@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Proycars — Plataforma Automotriz">
+
+  <!-- ========== HERO ========== -->
+  <section class="container py-12 sm:py-16 lg:py-24">
+    <div class="max-w-3xl">
+      <span class="badge badge-action mb-4 inline-block">Nuevo lanzamiento</span>
+      <h1 class="mb-4 sm:mb-6">
+        Tu próximo auto<br />
+        <span class="text-brand-red">empieza aquí.</span>
+      </h1>
+      <p class="mb-8 max-w-xl text-lg text-text-secondary sm:text-xl">
+        Explorá el catálogo más completo de vehículos. Compará, cotizá y encontrá el auto perfecto para vos.
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row sm:gap-4">
+        <a href="#" class="btn btn-primary btn-lg">Ver catálogo</a>
+        <a href="#" class="btn btn-outline btn-lg">Contactar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CARDS GRID ========== -->
+  <section class="container py-12 sm:py-16">
+    <h2 class="mb-2">Destacados</h2>
+    <p class="mb-8 max-w-lg text-text-muted">Los vehículos más buscados de la semana.</p>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+      <article class="card card-interactive">
+        <div class="card-header">
+          <div class="mb-2 flex items-center gap-2">
+            <span class="badge badge-action">Nuevo</span>
+            <span class="badge">SUV</span>
+          </div>
+          <h3 class="card-title">Toyota Corolla Cross</h3>
+          <p class="card-description">2024 · Automático · 0 km</p>
+        </div>
+        <div class="card-body">
+          <p>Motor 2.0L con tecnología híbrida. Consumo eficiente y máximo confort para toda la familia.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary btn-sm">Cotizar</a>
+          <a href="#" class="btn btn-ghost btn-sm">Ver más</a>
+        </div>
+      </article>
+
+      <article class="card card-interactive">
+        <div class="card-header">
+          <div class="mb-2 flex items-center gap-2">
+            <span class="badge">Sedán</span>
+          </div>
+          <h3 class="card-title">Volkswagen Vento</h3>
+          <p class="card-description">2024 · Manual · 0 km</p>
+        </div>
+        <div class="card-body">
+          <p>Diseño elegante con tecnología de punta. Ideal para quienes buscan potencia y estilo.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary btn-sm">Cotizar</a>
+          <a href="#" class="btn btn-ghost btn-sm">Ver más</a>
+        </div>
+      </article>
+
+      <article class="card card-interactive">
+        <div class="card-header">
+          <div class="mb-2 flex items-center gap-2">
+            <span class="badge badge-action">Oferta</span>
+            <span class="badge">Pickup</span>
+          </div>
+          <h3 class="card-title">Ford Ranger</h3>
+          <p class="card-description">2023 · Automático · 15.000 km</p>
+        </div>
+        <div class="card-body">
+          <p>La pickup más vendida. Robusta, versátil y preparada para cualquier terreno.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary btn-sm">Cotizar</a>
+          <a href="#" class="btn btn-ghost btn-sm">Ver más</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== DESIGN SYSTEM SHOWCASE ========== -->
+  <section class="container py-12 sm:py-16">
+    <h2 class="mb-2">Sistema de Diseño</h2>
+    <p class="mb-10 max-w-lg text-text-muted">Componentes base del design system corporativo.</p>
+
+    <!-- Typography -->
+    <div class="mb-12">
+      <h3 class="mb-4 text-text-muted">Tipografía</h3>
+      <div class="space-y-3 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <h1>Heading 1 — Escalable</h1>
+        <h2>Heading 2 — Fluid</h2>
+        <h3>Heading 3 — Responsive</h3>
+        <h4>Heading 4 — Adaptable</h4>
+        <h5>Heading 5 — Flexible</h5>
+        <h6>Heading 6 — Compact</h6>
+        <p>Párrafo base — El texto se adapta fluidamente entre breakpoints usando clamp() para una experiencia de lectura óptima en cualquier dispositivo.</p>
+        <small>Small text — Información secundaria y metadatos.</small>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mb-12">
+      <h3 class="mb-4 text-text-muted">Botones</h3>
+      <div class="space-y-6 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text-muted">Variantes</p>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-ghost">Ghost</button>
+          </div>
+        </div>
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text-muted">Tamaños</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary">Default</button>
+            <button class="btn btn-primary btn-lg">Large</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="mb-12">
+      <h3 class="mb-4 text-text-muted">Enlaces</h3>
+      <div class="flex flex-wrap gap-6 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <a href="#" class="link">Enlace primario</a>
+        <a href="#" class="link-subtle">Enlace sutil</a>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="mb-12">
+      <h3 class="mb-4 text-text-muted">Badges</h3>
+      <div class="flex flex-wrap gap-3 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <span class="badge">Default</span>
+        <span class="badge badge-action">Acción</span>
+      </div>
+    </div>
+
+    <!-- Colors -->
+    <div class="mb-12">
+      <h3 class="mb-4 text-text-muted">Paleta de Colores</h3>
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 sm:gap-4">
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-black sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Negro</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-black-light sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Negro Light</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-red sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Rojo</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-red-hover sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Rojo Hover</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-white sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Blanco</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-white-muted sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Blanco Muted</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="container py-12 sm:py-16">
+    <div class="rounded-2xl bg-surface-raised p-6 text-center sm:p-10 lg:p-16">
+      <h2 class="mb-4">¿Listo para encontrar tu auto?</h2>
+      <p class="mx-auto mb-8 max-w-md text-text-secondary">
+        Contactanos hoy y recibí asesoramiento personalizado sin compromiso.
+      </p>
+      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+        <a href="#" class="btn btn-primary btn-lg w-full sm:w-auto">Empezar ahora</a>
+        <a href="#" class="btn btn-outline btn-lg w-full sm:w-auto">Más información</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
