@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_NAME, CONTACT_EMAIL, CONTACT_ADDRESS } from '../config/site';
+---
+
+<BaseLayout title="Política de Privacidad" description="Política de privacidad y protección de datos de Proycars." noindex={true}>
+
+  <section class="container py-10 sm:py-16">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="mb-6">Política de Privacidad</h1>
+      <p class="mb-8 text-sm text-text-muted">Última actualización: febrero 2026</p>
+
+      <div class="legal-content space-y-8">
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">1. Responsable del tratamiento</h2>
+          <ul class="mt-3 space-y-1.5 text-sm text-text-secondary">
+            <li><strong class="text-brand-white">Responsable:</strong> {SITE_NAME}</li>
+            <li><strong class="text-brand-white">Dirección:</strong> {CONTACT_ADDRESS}</li>
+            <li><strong class="text-brand-white">Email:</strong> {CONTACT_EMAIL}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">2. Finalidad del tratamiento</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            En {SITE_NAME} tratamos la información que nos facilitan las personas interesadas con el fin de gestionar
+            las consultas recibidas a través de los canales de contacto disponibles (teléfono, email, WhatsApp),
+            así como para enviar información comercial relacionada con nuestros servicios cuando el usuario lo
+            haya autorizado expresamente.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">3. Legitimación</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            La base legal para el tratamiento de sus datos es el consentimiento del interesado, así como el interés
+            legítimo del responsable. La oferta prospectiva de productos y servicios está basada en el consentimiento
+            que se le solicita, sin que en ningún caso la retirada de este consentimiento condicione la ejecución
+            del contrato de compraventa.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">4. Conservación de datos</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            Los datos personales proporcionados se conservarán mientras se mantenga la relación comercial o durante
+            los años necesarios para cumplir con las obligaciones legales. Los datos no se cederán a terceros salvo
+            en los casos en que exista una obligación legal.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">5. Derechos del interesado</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            Cualquier persona tiene derecho a obtener confirmación sobre si en {SITE_NAME} estamos tratando datos
+            personales que les conciernan, o no. Las personas interesadas tienen derecho a acceder a sus datos
+            personales, así como a solicitar la rectificación de los datos inexactos o, en su caso, solicitar su
+            supresión cuando, entre otros motivos, los datos ya no sean necesarios para los fines que fueron recogidos.
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-text-secondary">
+            Puede ejercer sus derechos de acceso, rectificación, supresión, portabilidad, limitación y oposición
+            enviando un correo electrónico a <a href={`mailto:${CONTACT_EMAIL}`} class="text-brand-red hover:text-brand-red-hover">{CONTACT_EMAIL}</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">6. Seguridad</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            {SITE_NAME} ha adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad
+            e integridad de los datos, así como para evitar su alteración, pérdida, tratamiento o acceso no autorizado.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-surface-overlay pt-6">
+        <a href="/" class="inline-flex items-center gap-1.5 text-sm text-text-muted transition-colors hover:text-brand-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

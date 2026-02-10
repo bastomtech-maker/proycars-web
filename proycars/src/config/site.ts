@@ -1,3 +1,13 @@
+// ---- Site metadata ----
+export const SITE_NAME = 'Proycars';
+export const SITE_URL = 'https://proycars.com';
+export const SITE_DESCRIPTION = 'Tu concesionario de confianza. Vehículos de ocasión revisados y garantizados al mejor precio en Madrid.';
+export const SITE_LOCALE = 'es_ES';
+export const SITE_OG_IMAGE = '/og-image.jpg';
+
+// ---- Contact ----
+export const CONTACT_EMAIL = 'info@proycars.com';
+export const CONTACT_ADDRESS = 'Calle Ejemplo 123, 28001 Madrid, España';
 export const CONTACT_PHONE_LOCAL = '657688278';
 export const CONTACT_PHONE_INTL = '34657688278';
 export const CONTACT_PHONE_TEL = '+34 657 688 278';

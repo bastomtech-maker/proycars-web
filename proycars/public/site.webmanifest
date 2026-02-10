@@ -1,0 +1,21 @@
+{
+  "name": "Proycars",
+  "short_name": "Proycars",
+  "description": "Tu concesionario de confianza. Vehículos de ocasión revisados y garantizados.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}

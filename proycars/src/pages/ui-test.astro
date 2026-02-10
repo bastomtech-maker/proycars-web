@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BadgeEstado from '../components/BadgeEstado.astro';
+import PriceTag from '../components/PriceTag.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import PhoneButton from '../components/PhoneButton.astro';
+import CarCard from '../components/CarCard.astro';
+import { CONTACT_PHONE_TEL, SITE_NAME } from '../config/site';
+---
+
+<BaseLayout title="UI Test — Validación de componentes" noindex={true}>
+
+  <section class="container py-10 sm:py-16">
+    <h1 class="mb-2">UI Test</h1>
+    <p class="mb-10 max-w-lg text-text-muted">Página de validación de componentes responsive. Redimensiona el navegador para comprobar el comportamiento en cada breakpoint.</p>
+
+    <!-- ========== TYPOGRAPHY ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Tipografía</h2>
+      <div class="space-y-3 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <h1>Heading 1 — Escalable</h1>
+        <h2>Heading 2 — Fluid</h2>
+        <h3>Heading 3 — Responsive</h3>
+        <h4>Heading 4 — Adaptable</h4>
+        <h5>Heading 5 — Flexible</h5>
+        <h6>Heading 6 — Compact</h6>
+        <p>Párrafo base — El texto se adapta fluidamente entre breakpoints usando clamp() para una experiencia de lectura óptima en cualquier dispositivo.</p>
+        <small>Small text — Información secundaria y metadatos.</small>
+      </div>
+    </div>
+
+    <!-- ========== BUTTONS ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Botones</h2>
+      <div class="space-y-6 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text-muted">Variantes</p>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-whatsapp">WhatsApp</button>
+          </div>
+        </div>
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text-muted">Tamaños</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary">Default</button>
+            <button class="btn btn-primary btn-lg">Large</button>
+          </div>
+        </div>
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-text-muted">Componentes reutilizables</p>
+          <div class="flex flex-wrap gap-3">
+            <WhatsAppButton label="WhatsApp Button" />
+            <PhoneButton />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== BADGES ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Badges</h2>
+      <div class="flex flex-wrap gap-3 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <span class="badge">Default</span>
+        <span class="badge badge-action">Acción</span>
+        <BadgeEstado estado="Nuevo" />
+        <BadgeEstado estado="Seminuevo" />
+        <BadgeEstado estado="Ocasión" />
+      </div>
+    </div>
+
+    <!-- ========== PRICE TAG ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">PriceTag</h2>
+      <div class="flex flex-wrap items-center gap-6 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <PriceTag precio={12500} class="text-base" />
+        <PriceTag precio={34900} class="text-xl" />
+        <PriceTag precio={89000} class="text-3xl" />
+      </div>
+    </div>
+
+    <!-- ========== LINKS ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Enlaces</h2>
+      <div class="flex flex-wrap gap-6 rounded-xl bg-surface-raised p-4 sm:p-6">
+        <a href="#" class="link">Enlace primario</a>
+        <a href="#" class="link-subtle">Enlace sutil</a>
+      </div>
+    </div>
+
+    <!-- ========== COLORS ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Paleta de Colores</h2>
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 sm:gap-4">
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-black sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Negro</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-black-light sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Negro Light</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-red sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Rojo</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-red-hover sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Rojo Hover</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-white sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Blanco</div>
+        </div>
+        <div class="overflow-hidden rounded-lg border border-surface-overlay">
+          <div class="h-16 bg-brand-white-muted sm:h-20"></div>
+          <div class="bg-surface-raised p-2 text-center text-xs text-text-muted">Blanco Muted</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CARDS ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Cards genéricas</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Card estática</div>
+            <div class="card-description">Sin interacción hover</div>
+          </div>
+          <div class="card-body">Contenido de ejemplo para verificar padding responsive.</div>
+        </div>
+        <div class="card card-interactive">
+          <div class="card-header">
+            <div class="card-title">Card interactiva</div>
+            <div class="card-description">Con hover y elevación</div>
+          </div>
+          <div class="card-body">Pasa el ratón por encima para ver el efecto hover.</div>
+        </div>
+        <div class="card card-interactive">
+          <div class="card-header">
+            <div class="card-title">Card con footer</div>
+            <div class="card-description">Incluye acciones</div>
+          </div>
+          <div class="card-body">Ejemplo con botones en el footer.</div>
+          <div class="card-footer">
+            <button class="btn btn-primary btn-sm">Acción</button>
+            <button class="btn btn-ghost btn-sm">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CAR CARDS ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">CarCard (responsive)</h2>
+      <p class="mb-4 text-sm text-text-muted">Móvil: info esencial + CTA visible. Desktop: detalles y CTA aparecen en hover.</p>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+        <CarCard
+          marca="BMW"
+          modelo="Serie 3 320d"
+          año={2022}
+          precio={34900}
+          kilometros={28000}
+          combustible="Diésel"
+          transmision="Automático"
+          potencia={190}
+          imagen="/img/coches/bmw-serie-3-1.jpg"
+          estado="Seminuevo"
+          destacado={true}
+          slug="bmw-serie-3-320d"
+        />
+        <CarCard
+          marca="Tesla"
+          modelo="Model 3 Long Range"
+          año={2023}
+          precio={42500}
+          kilometros={5000}
+          combustible="Eléctrico"
+          transmision="Automático"
+          potencia={351}
+          imagen="/img/coches/tesla-model-3-1.jpg"
+          estado="Seminuevo"
+          destacado={true}
+          slug="tesla-model-3-long-range"
+        />
+        <CarCard
+          marca="SEAT"
+          modelo="León FR"
+          año={2021}
+          precio={22900}
+          kilometros={35000}
+          combustible="Gasolina"
+          transmision="Manual"
+          potencia={150}
+          imagen="/img/coches/seat-leon-1.jpg"
+          estado="Ocasión"
+          destacado={false}
+          slug="seat-leon-fr"
+        />
+      </div>
+    </div>
+
+    <!-- ========== RESPONSIVE GRID TEST ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Grid responsive (1 → 2 → 3 → 4 cols)</h2>
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div class="flex h-24 items-center justify-center rounded-lg bg-surface-raised text-sm font-medium text-text-muted">
+            Item {i + 1}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ========== BREAKPOINT INDICATOR ========== -->
+    <div class="mb-12">
+      <h2 class="mb-4 text-text-muted">Breakpoint actual</h2>
+      <div class="rounded-xl bg-surface-raised p-4 text-center sm:p-6">
+        <p class="text-lg font-bold text-brand-red sm:hidden">📱 Mobile (&lt; 640px)</p>
+        <p class="hidden text-lg font-bold text-amber-400 sm:block md:hidden">📱 SM / Tablet (640px+)</p>
+        <p class="hidden text-lg font-bold text-emerald-400 md:block lg:hidden">💻 MD (768px+)</p>
+        <p class="hidden text-lg font-bold text-sky-400 lg:block xl:hidden">🖥️ LG (1024px+)</p>
+        <p class="hidden text-lg font-bold text-purple-400 xl:block">🖥️ XL (1280px+)</p>
+      </div>
+    </div>
+
+  </section>
+
+</BaseLayout>

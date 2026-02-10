@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_NAME, SITE_URL, CONTACT_EMAIL, CONTACT_ADDRESS, CONTACT_PHONE_TEL } from '../config/site';
+---
+
+<BaseLayout title="Aviso Legal" description="Aviso legal y condiciones de uso del sitio web de Proycars." noindex={true}>
+
+  <section class="container py-10 sm:py-16">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="mb-6">Aviso Legal</h1>
+      <p class="mb-8 text-sm text-text-muted">Última actualización: febrero 2026</p>
+
+      <div class="legal-content space-y-8">
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">1. Datos identificativos</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            En cumplimiento del deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio,
+            de Servicios de la Sociedad de la Información y del Comercio Electrónico, a continuación se reflejan los
+            siguientes datos:
+          </p>
+          <ul class="mt-3 space-y-1.5 text-sm text-text-secondary">
+            <li><strong class="text-brand-white">Denominación social:</strong> {SITE_NAME}</li>
+            <li><strong class="text-brand-white">Domicilio:</strong> {CONTACT_ADDRESS}</li>
+            <li><strong class="text-brand-white">Teléfono:</strong> {CONTACT_PHONE_TEL}</li>
+            <li><strong class="text-brand-white">Email:</strong> {CONTACT_EMAIL}</li>
+            <li><strong class="text-brand-white">Sitio web:</strong> {SITE_URL}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">2. Objeto</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            El presente sitio web tiene por objeto facilitar al público en general el conocimiento de las actividades
+            que {SITE_NAME} realiza y de los servicios que presta. {SITE_NAME} se reserva la facultad de efectuar,
+            en cualquier momento y sin necesidad de previo aviso, modificaciones y actualizaciones de la información
+            contenida en su web o en la configuración y presentación de esta.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">3. Propiedad intelectual e industrial</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            Todos los contenidos del sitio web, incluyendo, sin carácter limitativo, textos, fotografías, gráficos,
+            imágenes, iconos, tecnología, software, enlaces y demás contenidos audiovisuales o sonoros, así como su
+            diseño gráfico y códigos fuente, son propiedad intelectual de {SITE_NAME} o de terceros, sin que puedan
+            entenderse cedidos al usuario ninguno de los derechos de explotación reconocidos por la normativa vigente
+            en materia de propiedad intelectual sobre los mismos.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">4. Condiciones de uso</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            El usuario se compromete a hacer un uso adecuado de los contenidos y servicios que {SITE_NAME} ofrece
+            a través de su sitio web y con carácter enunciativo pero no limitativo, a no emplearlos para incurrir
+            en actividades ilícitas, ilegales o contrarias a la buena fe y al orden público.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">5. Legislación aplicable</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            Para la resolución de todas las controversias o cuestiones relacionadas con el presente sitio web o de
+            las actividades en él desarrolladas, será de aplicación la legislación española, a la que se someten
+            expresamente las partes.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-surface-overlay pt-6">
+        <a href="/" class="inline-flex items-center gap-1.5 text-sm text-text-muted transition-colors hover:text-brand-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

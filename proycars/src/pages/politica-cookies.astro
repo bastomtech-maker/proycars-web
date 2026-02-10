@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_NAME, SITE_URL, CONTACT_EMAIL } from '../config/site';
+---
+
+<BaseLayout title="Política de Cookies" description="Política de cookies del sitio web de Proycars." noindex={true}>
+
+  <section class="container py-10 sm:py-16">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="mb-6">Política de Cookies</h1>
+      <p class="mb-8 text-sm text-text-muted">Última actualización: febrero 2026</p>
+
+      <div class="legal-content space-y-8">
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">1. ¿Qué son las cookies?</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            Las cookies son pequeños archivos de texto que los sitios web almacenan en su dispositivo (ordenador,
+            tablet o móvil) cuando los visita. Se utilizan ampliamente para hacer que los sitios web funcionen de
+            manera más eficiente, así como para proporcionar información a los propietarios del sitio.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">2. Tipos de cookies que utilizamos</h2>
+          <div class="mt-4 overflow-hidden rounded-lg border border-surface-overlay">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-surface-overlay bg-surface-raised">
+                  <th class="px-4 py-3 text-left font-semibold text-brand-white">Tipo</th>
+                  <th class="px-4 py-3 text-left font-semibold text-brand-white">Finalidad</th>
+                  <th class="hidden px-4 py-3 text-left font-semibold text-brand-white sm:table-cell">Duración</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-surface-overlay text-text-secondary">
+                <tr>
+                  <td class="px-4 py-3 font-medium text-brand-white">Técnicas</td>
+                  <td class="px-4 py-3">Necesarias para el funcionamiento básico del sitio web.</td>
+                  <td class="hidden px-4 py-3 sm:table-cell">Sesión</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-medium text-brand-white">Analíticas</td>
+                  <td class="px-4 py-3">Nos permiten medir y analizar el uso del sitio web para mejorar nuestros servicios.</td>
+                  <td class="hidden px-4 py-3 sm:table-cell">2 años</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">3. ¿Cómo gestionar las cookies?</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            Puede configurar su navegador para rechazar cookies o para que le avise cuando se envíe una cookie.
+            Sin embargo, si rechaza las cookies, es posible que algunas partes del sitio web no funcionen correctamente.
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-text-secondary">
+            A continuación, le indicamos los enlaces para gestionar las cookies en los navegadores más comunes:
+          </p>
+          <ul class="mt-3 space-y-1.5 text-sm">
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" class="text-brand-red hover:text-brand-red-hover">Google Chrome</a></li>
+            <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer" class="text-brand-red hover:text-brand-red-hover">Mozilla Firefox</a></li>
+            <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" class="text-brand-red hover:text-brand-red-hover">Safari</a></li>
+            <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer" class="text-brand-red hover:text-brand-red-hover">Microsoft Edge</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="mb-3 text-xl font-bold text-brand-white sm:text-2xl">4. Contacto</h2>
+          <p class="text-sm leading-relaxed text-text-secondary">
+            Si tiene alguna duda sobre nuestra política de cookies, puede contactarnos en
+            <a href={`mailto:${CONTACT_EMAIL}`} class="text-brand-red hover:text-brand-red-hover">{CONTACT_EMAIL}</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-surface-overlay pt-6">
+        <a href="/" class="inline-flex items-center gap-1.5 text-sm text-text-muted transition-colors hover:text-brand-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
