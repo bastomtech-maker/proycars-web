@@ -1,0 +1,14 @@
+{
+  "marca": "Ford",
+  "modelo": "Fiesta Titanium",
+  "año": 2005,
+  "precio": 3500,
+  "kilometros": 185000,
+  "combustible": "Gasolina",
+  "transmision": "Manual",
+  "potencia": 85,
+  "imagenes": ["/img/coches/ford-fiesta-1.jpg", "/img/coches/ford-fiesta-2.jpg"],
+  "estado": "Ocasión",
+  "destacado": false,
+  "slug": "ford-fiesta-titanium"
+}
