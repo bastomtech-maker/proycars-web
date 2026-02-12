@@ -12,9 +12,27 @@ const cochesData = allCoches
     return b.año - a.año;
   });
 
+const marcasMap = new Map<string, number>();
+cochesData.forEach((c) => marcasMap.set(c.marca, (marcasMap.get(c.marca) || 0) + 1));
+const marcas = [...marcasMap.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+
 const combustibles = [...new Set(cochesData.map((c) => c.combustible))].sort();
 const transmisiones = [...new Set(cochesData.map((c) => c.transmision))].sort();
 const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
+
+const precios = cochesData.map((c) => c.precio);
+const años = cochesData.map((c) => c.año);
+const kms = cochesData.map((c) => c.kilometros);
+
+const precioMin = Math.min(...precios);
+const precioMax = Math.max(...precios);
+const añoMin = Math.min(...años);
+const añoMax = Math.max(...años);
+const kmMin = Math.min(...kms);
+const kmMax = Math.max(...kms);
+
+const precioStep = 500;
+const kmStep = 1000;
 ---
 
 <BaseLayout title="Coches — Proycars" description="Descubre nuestro catálogo de vehículos de ocasión revisados y garantizados.">
@@ -78,6 +96,20 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
               </select>
             </div>
 
+            <!-- Marca -->
+            <fieldset class="mb-5">
+              <legend class="mb-2 text-xs font-semibold uppercase tracking-wider text-text-muted">Marca</legend>
+              <div class="flex flex-col gap-2">
+                {marcas.map(([marca, count]) => (
+                  <label class="flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-text-secondary transition-colors hover:bg-surface-overlay hover:text-brand-white lg:min-h-0 lg:px-0 lg:py-0">
+                    <input type="checkbox" value={marca} name="marca" class="filter-checkbox accent-brand-red" />
+                    <span class="flex-1">{marca}</span>
+                    <span class="text-xs text-text-muted">{count}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
             <!-- Combustible -->
             <fieldset class="mb-5">
               <legend class="mb-2 text-xs font-semibold uppercase tracking-wider text-text-muted">Combustible</legend>
@@ -117,6 +149,114 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
               </div>
             </fieldset>
 
+            <!-- Precio (dual range) -->
+            <fieldset class="mb-5">
+              <legend class="mb-2 text-xs font-semibold uppercase tracking-wider text-text-muted">Precio</legend>
+              <div id="precio-display" class="range-display mb-2" aria-live="polite"></div>
+              <div class="dual-range-wrap"
+                id="precio-range"
+              >
+                <div class="dual-range-track"></div>
+                <div class="dual-range-fill" id="precio-fill"></div>
+                <input
+                  type="range"
+                  id="precio-slider-min"
+                  min={precioMin}
+                  max={precioMax}
+                  value={precioMin}
+                  step={precioStep}
+                  aria-label="Precio mínimo"
+                  aria-valuemin={precioMin}
+                  aria-valuemax={precioMax}
+                  aria-valuenow={precioMin}
+                />
+                <input
+                  type="range"
+                  id="precio-slider-max"
+                  min={precioMin}
+                  max={precioMax}
+                  value={precioMax}
+                  step={precioStep}
+                  aria-label="Precio máximo"
+                  aria-valuemin={precioMin}
+                  aria-valuemax={precioMax}
+                  aria-valuenow={precioMax}
+                />
+              </div>
+            </fieldset>
+
+            <!-- Año (dual range) -->
+            <fieldset class="mb-5">
+              <legend class="mb-2 text-xs font-semibold uppercase tracking-wider text-text-muted">Año</legend>
+              <div id="año-display" class="range-display mb-2" aria-live="polite"></div>
+              <div class="dual-range-wrap"
+                id="año-range"
+              >
+                <div class="dual-range-track"></div>
+                <div class="dual-range-fill" id="año-fill"></div>
+                <input
+                  type="range"
+                  id="año-slider-min"
+                  min={añoMin}
+                  max={añoMax}
+                  value={añoMin}
+                  step="1"
+                  aria-label="Año mínimo"
+                  aria-valuemin={añoMin}
+                  aria-valuemax={añoMax}
+                  aria-valuenow={añoMin}
+                />
+                <input
+                  type="range"
+                  id="año-slider-max"
+                  min={añoMin}
+                  max={añoMax}
+                  value={añoMax}
+                  step="1"
+                  aria-label="Año máximo"
+                  aria-valuemin={añoMin}
+                  aria-valuemax={añoMax}
+                  aria-valuenow={añoMax}
+                />
+              </div>
+            </fieldset>
+
+            <!-- Kilómetros (dual range) -->
+            <fieldset class="mb-5">
+              <legend class="mb-2 text-xs font-semibold uppercase tracking-wider text-text-muted">Kilómetros</legend>
+              <div id="km-display" class="range-display mb-2" aria-live="polite"></div>
+              <div class="dual-range-wrap"
+                id="km-range"
+              >
+                <div class="dual-range-track"></div>
+                <div class="dual-range-fill" id="km-fill"></div>
+                <input
+                  type="range"
+                  id="km-slider-min"
+                  min={kmMin}
+                  max={kmMax}
+                  value={kmMin}
+                  step={kmStep}
+                  aria-label="Kilómetros mínimo"
+                  aria-valuemin={kmMin}
+                  aria-valuemax={kmMax}
+                  aria-valuenow={kmMin}
+                />
+                <input
+                  type="range"
+                  id="km-slider-max"
+                  min={kmMin}
+                  max={kmMax}
+                  value={kmMax}
+                  step={kmStep}
+                  aria-label="Kilómetros máximo"
+                  aria-valuemin={kmMin}
+                  aria-valuemax={kmMax}
+                  aria-valuenow={kmMax}
+                />
+              </div>
+            </fieldset>
+
             <!-- Reset -->
             <button
               id="filters-reset"
@@ -132,7 +272,7 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
       <div class="min-w-0 flex-1">
         <!-- Results count -->
         <div class="mb-4 flex items-center justify-between">
-          <p id="results-count" class="text-sm text-text-muted">
+          <p id="results-count" class="text-sm text-text-muted" aria-live="polite" aria-atomic="true">
             <span id="visible-count">{cochesData.length}</span> de {cochesData.length} vehículos
           </p>
           <!-- Active filters (desktop inline) -->
@@ -144,8 +284,9 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
           <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-4 h-12 w-12 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
-          <p class="text-lg font-semibold text-brand-white">No se encontraron vehículos</p>
-          <p class="mt-1 text-sm text-text-muted">Prueba a modificar los filtros para ver más resultados.</p>
+          <p class="text-lg font-semibold text-brand-white">No se han encontrado coches con estos filtros</p>
+          <p class="mt-1 text-sm text-text-muted">Prueba a modificar o limpiar los filtros para ver más resultados.</p>
+          <button id="no-results-reset" class="btn btn-outline mt-4">Limpiar filtros</button>
         </div>
 
         <!-- Car grid -->
@@ -156,6 +297,7 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
               data-precio={coche.precio}
               data-año={coche.año}
               data-km={coche.kilometros}
+              data-marca={coche.marca}
               data-combustible={coche.combustible}
               data-transmision={coche.transmision}
               data-estado={coche.estado}
@@ -186,7 +328,7 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
 </BaseLayout>
 
 <script>
-  // ===== FILTER & SORT ENGINE =====
+  // ===== DOM REFS =====
   const grid = document.getElementById('car-grid')!;
   const items = Array.from(grid.querySelectorAll<HTMLElement>('.car-grid-item'));
   const sortSelect = document.getElementById('sort-select') as HTMLSelectElement;
@@ -196,10 +338,146 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
   const filtersPanel = document.getElementById('filters-panel')!;
   const filtersChevron = document.getElementById('filters-chevron');
   const filtersReset = document.getElementById('filters-reset');
+  const noResultsReset = document.getElementById('no-results-reset');
   const checkboxes = document.querySelectorAll<HTMLInputElement>('.filter-checkbox');
   const activeFiltersContainer = document.getElementById('active-filters')!;
 
-  // Mobile toggle
+  // ===== DUAL RANGE HELPER =====
+  interface DualRange {
+    sliderMin: HTMLInputElement;
+    sliderMax: HTMLInputElement;
+    fill: HTMLElement;
+    display: HTMLElement;
+    absMin: number;
+    absMax: number;
+    format: (v: number) => string;
+  }
+
+  let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+  function debouncedApply() {
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => applyFiltersAndSort(), 30);
+  }
+
+  function initDualRange(
+    prefix: string,
+    formatFn: (v: number) => string
+  ): DualRange {
+    const sliderMin = document.getElementById(`${prefix}-slider-min`) as HTMLInputElement;
+    const sliderMax = document.getElementById(`${prefix}-slider-max`) as HTMLInputElement;
+    const fill = document.getElementById(`${prefix}-fill`) as HTMLElement;
+    const display = document.getElementById(`${prefix}-display`) as HTMLElement;
+    const absMin = Number(sliderMin.min);
+    const absMax = Number(sliderMin.max);
+
+    const dr: DualRange = { sliderMin, sliderMax, fill, display, absMin, absMax, format: formatFn };
+
+    function onSliderInput() {
+      let lo = Number(sliderMin.value);
+      let hi = Number(sliderMax.value);
+      if (lo > hi) { [lo, hi] = [hi, lo]; sliderMin.value = String(lo); sliderMax.value = String(hi); }
+      sliderMin.setAttribute('aria-valuenow', String(lo));
+      sliderMax.setAttribute('aria-valuenow', String(hi));
+      updateFill(dr);
+      updateDisplay(dr);
+      debouncedApply();
+    }
+
+    sliderMin.addEventListener('input', onSliderInput);
+    sliderMax.addEventListener('input', onSliderInput);
+
+    updateFill(dr);
+    updateDisplay(dr);
+    return dr;
+  }
+
+  function updateFill(dr: DualRange) {
+    const range = dr.absMax - dr.absMin;
+    if (range === 0) { dr.fill.style.left = '0%'; dr.fill.style.right = '0%'; return; }
+    const lo = Number(dr.sliderMin.value);
+    const hi = Number(dr.sliderMax.value);
+    const leftPct = ((Math.min(lo, hi) - dr.absMin) / range) * 100;
+    const rightPct = ((dr.absMax - Math.max(lo, hi)) / range) * 100;
+    dr.fill.style.left = `${leftPct}%`;
+    dr.fill.style.right = `${rightPct}%`;
+  }
+
+  function updateDisplay(dr: DualRange) {
+    const lo = Number(dr.sliderMin.value);
+    const hi = Number(dr.sliderMax.value);
+    dr.display.textContent = `${dr.format(Math.min(lo, hi))} – ${dr.format(Math.max(lo, hi))}`;
+  }
+
+  function getRangeValues(dr: DualRange): [number, number] {
+    const lo = Number(dr.sliderMin.value);
+    const hi = Number(dr.sliderMax.value);
+    return [Math.min(lo, hi), Math.max(lo, hi)];
+  }
+
+  function resetRange(dr: DualRange) {
+    dr.sliderMin.value = String(dr.absMin);
+    dr.sliderMax.value = String(dr.absMax);
+    dr.sliderMin.setAttribute('aria-valuenow', String(dr.absMin));
+    dr.sliderMax.setAttribute('aria-valuenow', String(dr.absMax));
+    updateFill(dr);
+    updateDisplay(dr);
+  }
+
+  // ===== INIT RANGES =====
+  const fmtEur = (v: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(v);
+  const fmtKm = (v: number) => new Intl.NumberFormat('es-ES').format(v) + ' km';
+  const fmtYear = (v: number) => String(v);
+
+  const precioRange = initDualRange('precio', fmtEur);
+  const añoRange = initDualRange('año', fmtYear);
+  const kmRange = initDualRange('km', fmtKm);
+
+  // ===== QUERY PARAM SYNC =====
+  function readQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    checkboxes.forEach((cb) => {
+      const paramValues = params.get(cb.name);
+      if (paramValues) {
+        const values = paramValues.split(',').map((v) => v.trim());
+        cb.checked = values.includes(cb.value);
+      }
+    });
+    const sort = params.get('orden');
+    if (sort) sortSelect.value = sort;
+
+    // Range params
+    const ranges: [DualRange, string][] = [[precioRange, 'precio'], [añoRange, 'año'], [kmRange, 'km']];
+    ranges.forEach(([dr, key]) => {
+      const minP = params.get(`${key}_min`);
+      const maxP = params.get(`${key}_max`);
+      if (minP) { dr.sliderMin.value = minP; dr.sliderMin.setAttribute('aria-valuenow', minP); }
+      if (maxP) { dr.sliderMax.value = maxP; dr.sliderMax.setAttribute('aria-valuenow', maxP); }
+      updateFill(dr);
+      updateDisplay(dr);
+    });
+  }
+
+  function writeQueryParams(filters: Record<string, string[]>) {
+    const params = new URLSearchParams();
+    for (const [key, values] of Object.entries(filters)) {
+      if (values.length > 0) params.set(key, values.join(','));
+    }
+    if (sortSelect.value !== 'destacado') params.set('orden', sortSelect.value);
+
+    // Range params (only write if not at defaults)
+    const ranges: [DualRange, string][] = [[precioRange, 'precio'], [añoRange, 'año'], [kmRange, 'km']];
+    ranges.forEach(([dr, key]) => {
+      const [lo, hi] = getRangeValues(dr);
+      if (lo > dr.absMin) params.set(`${key}_min`, String(lo));
+      if (hi < dr.absMax) params.set(`${key}_max`, String(hi));
+    });
+
+    const qs = params.toString();
+    const newUrl = qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+    window.history.replaceState(null, '', newUrl);
+  }
+
+  // ===== MOBILE TOGGLE =====
   filtersToggle?.addEventListener('click', () => {
     const isOpen = !filtersPanel.classList.contains('hidden');
     filtersPanel.classList.toggle('hidden');
@@ -207,7 +485,7 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
     filtersChevron?.classList.toggle('rotate-180');
   });
 
-  // Gather active filters
+  // ===== GATHER CHECKBOX FILTERS =====
   function getActiveFilters(): Record<string, string[]> {
     const filters: Record<string, string[]> = {};
     checkboxes.forEach((cb) => {
@@ -220,22 +498,37 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
     return filters;
   }
 
-  // Apply filters + sort
+  // ===== APPLY ALL FILTERS + SORT =====
   function applyFiltersAndSort() {
     const filters = getActiveFilters();
     const sortValue = sortSelect.value;
     let visible = 0;
 
+    // Get range values
+    const [precioLo, precioHi] = getRangeValues(precioRange);
+    const [añoLo, añoHi] = getRangeValues(añoRange);
+    const [kmLo, kmHi] = getRangeValues(kmRange);
+
     // Filter
     items.forEach((item) => {
       let show = true;
+
+      // Checkbox filters
       for (const [key, values] of Object.entries(filters)) {
         const itemValue = item.dataset[key] || '';
-        if (!values.includes(itemValue)) {
-          show = false;
-          break;
-        }
+        if (!values.includes(itemValue)) { show = false; break; }
       }
+
+      // Range filters
+      if (show) {
+        const p = Number(item.dataset.precio);
+        const a = Number(item.dataset['año']);
+        const k = Number(item.dataset.km);
+        if (p < precioLo || p > precioHi) show = false;
+        if (a < añoLo || a > añoHi) show = false;
+        if (k < kmLo || k > kmHi) show = false;
+      }
+
       item.style.display = show ? '' : 'none';
       item.dataset.visible = show ? '1' : '0';
       if (show) visible++;
@@ -245,16 +538,11 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
     const visibleItems = items.filter((i) => i.dataset.visible === '1');
     visibleItems.sort((a, b) => {
       switch (sortValue) {
-        case 'precio-asc':
-          return Number(a.dataset.precio) - Number(b.dataset.precio);
-        case 'precio-desc':
-          return Number(b.dataset.precio) - Number(a.dataset.precio);
-        case 'año-desc':
-          return Number(b.dataset['año']) - Number(a.dataset['año']);
-        case 'año-asc':
-          return Number(a.dataset['año']) - Number(b.dataset['año']);
-        case 'km-asc':
-          return Number(a.dataset.km) - Number(b.dataset.km);
+        case 'precio-asc': return Number(a.dataset.precio) - Number(b.dataset.precio);
+        case 'precio-desc': return Number(b.dataset.precio) - Number(a.dataset.precio);
+        case 'año-desc': return Number(b.dataset['año']) - Number(a.dataset['año']);
+        case 'año-asc': return Number(a.dataset['año']) - Number(b.dataset['año']);
+        case 'km-asc': return Number(a.dataset.km) - Number(b.dataset.km);
         case 'destacado':
         default:
           return Number(b.dataset.destacado) - Number(a.dataset.destacado)
@@ -264,7 +552,6 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
 
     // Reorder DOM
     visibleItems.forEach((item) => grid.appendChild(item));
-    // Append hidden items at end
     items.filter((i) => i.dataset.visible !== '1').forEach((item) => grid.appendChild(item));
 
     // Update count
@@ -272,49 +559,85 @@ const estados = [...new Set(cochesData.map((c) => c.estado))].sort();
     noResults.classList.toggle('hidden', visible > 0);
     grid.classList.toggle('hidden', visible === 0);
 
-    // Update active filter pills
+    // Update active filter pills + URL
     renderActiveFilters(filters);
+    writeQueryParams(filters);
   }
 
-  // Render active filter pills
+  // ===== ACTIVE FILTER PILLS =====
   function renderActiveFilters(filters: Record<string, string[]>) {
     activeFiltersContainer.innerHTML = '';
-    const hasFilters = Object.values(filters).some((v) => v.length > 0);
-    activeFiltersContainer.classList.toggle('hidden', !hasFilters);
-    activeFiltersContainer.classList.toggle('flex', hasFilters);
 
+    const hasCheckboxFilters = Object.values(filters).some((v) => v.length > 0);
+    const [pLo, pHi] = getRangeValues(precioRange);
+    const [aLo, aHi] = getRangeValues(añoRange);
+    const [kLo, kHi] = getRangeValues(kmRange);
+    const hasRangeFilters =
+      pLo > precioRange.absMin || pHi < precioRange.absMax ||
+      aLo > añoRange.absMin || aHi < añoRange.absMax ||
+      kLo > kmRange.absMin || kHi < kmRange.absMax;
+    const hasAny = hasCheckboxFilters || hasRangeFilters;
+
+    activeFiltersContainer.classList.toggle('hidden', !hasAny);
+    activeFiltersContainer.classList.toggle('flex', hasAny);
+
+    // Checkbox pills
     for (const [, values] of Object.entries(filters)) {
       values.forEach((val) => {
         const pill = document.createElement('button');
         pill.className = 'inline-flex items-center gap-1 rounded-full bg-brand-red/15 px-2.5 py-0.5 text-xs font-medium text-brand-red-light transition-colors hover:bg-brand-red/25';
         pill.innerHTML = `${val} <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`;
         pill.addEventListener('click', () => {
-          // Uncheck the matching checkbox
-          checkboxes.forEach((cb) => {
-            if (cb.value === val && cb.checked) cb.checked = false;
-          });
+          checkboxes.forEach((cb) => { if (cb.value === val && cb.checked) cb.checked = false; });
           applyFiltersAndSort();
         });
         activeFiltersContainer.appendChild(pill);
       });
     }
+
+    // Range pills
+    function addRangePill(label: string, dr: DualRange) {
+      const pill = document.createElement('button');
+      pill.className = 'inline-flex items-center gap-1 rounded-full bg-brand-red/15 px-2.5 py-0.5 text-xs font-medium text-brand-red-light transition-colors hover:bg-brand-red/25';
+      pill.innerHTML = `${label} <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`;
+      pill.addEventListener('click', () => { resetRange(dr); applyFiltersAndSort(); });
+      activeFiltersContainer.appendChild(pill);
+    }
+
+    if (pLo > precioRange.absMin || pHi < precioRange.absMax) {
+      addRangePill(`${fmtEur(pLo)} – ${fmtEur(pHi)}`, precioRange);
+    }
+    if (aLo > añoRange.absMin || aHi < añoRange.absMax) {
+      addRangePill(`${aLo}–${aHi}`, añoRange);
+    }
+    if (kLo > kmRange.absMin || kHi < kmRange.absMax) {
+      addRangePill(`${fmtKm(kLo)} – ${fmtKm(kHi)}`, kmRange);
+    }
   }
 
-  // Event listeners
+  // ===== EVENT LISTENERS =====
   sortSelect.addEventListener('change', applyFiltersAndSort);
   checkboxes.forEach((cb) => cb.addEventListener('change', applyFiltersAndSort));
 
-  // Reset
-  filtersReset?.addEventListener('click', () => {
+  // ===== RESET ALL =====
+  function resetAll() {
     checkboxes.forEach((cb) => (cb.checked = false));
     sortSelect.value = 'destacado';
+    resetRange(precioRange);
+    resetRange(añoRange);
+    resetRange(kmRange);
     applyFiltersAndSort();
+  }
+
+  filtersReset?.addEventListener('click', resetAll);
+  noResultsReset?.addEventListener('click', resetAll);
+
+  // ===== DESKTOP RESIZE =====
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) filtersPanel.classList.remove('hidden');
   });
 
-  // Close filters on desktop resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024) {
-      filtersPanel.classList.remove('hidden');
-    }
-  });
+  // ===== INIT =====
+  readQueryParams();
+  applyFiltersAndSort();
 </script>
